@@ -40,6 +40,17 @@ data baked into the frontend itself.
 Leave it running for the rest of this exercise — the Playwright suite below talks to this same
 running app.
 
+### Troubleshooting
+
+- **`Local:` line never appears / browser says "connection refused" at localhost:4200.** The
+  Angular CLI requires **Node 18.13 or newer**. Check with `node -v`. If you're on an older
+  version, switch (e.g. `nvm use --lts`, or `nvm install --lts` if you don't have it yet) and
+  re-run `npm run dev`. If you use `nvm`, note that switching versions is per-terminal-session
+  unless you set a default (`nvm alias default lts/*`) — if you open a new terminal partway
+  through, it can silently revert to an older Node and cause this exact symptom.
+- **`EADDRINUSE` on port 3001 or 4200.** Something from an earlier run is still listening. Find
+  and stop it with `lsof -t -i:3001` (or `:4200`) and `kill <PID>`, then re-run `npm run dev`.
+
 ### What's here
 
 - `mock-server/src/farmService.ts` — the core business logic, and the spec comment describing
