@@ -1,0 +1,33 @@
+<div class="card">
+  <h2>Add an Animal</h2>
+  <form (ngSubmit)="onSubmit()" data-testid="add-animal-form">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="animal-name">Name</label>
+        <input
+          id="animal-name"
+          type="text"
+          name="name"
+          data-testid="animal-name-input"
+          [(ngModel)]="name"
+        />
+      </div>
+      <div class="form-field">
+        <label for="animal-color">Favorite Color</label>
+        <select
+          id="animal-color"
+          name="favoriteColor"
+          data-testid="animal-color-select"
+          [(ngModel)]="favoriteColor"
+        >
+          <option value="" disabled selected>Select a color</option>
+          <option *ngFor="let c of colors" [value]="c">{{ c }}</option>
+        </select>
+      </div>
+      <button type="submit" data-testid="add-animal-button">Add Animal</button>
+    </div>
+    <p class="error-text" *ngIf="errorMessage" data-testid="add-animal-error">
+      {{ errorMessage }}
+    </p>
+  </form>
+</div>

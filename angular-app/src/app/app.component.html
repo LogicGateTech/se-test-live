@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>LogicGate Farm</h1>
+  <p class="subtitle">Manage animals and their barns.</p>
+
+  <p class="error-text" *ngIf="loadError" data-testid="load-error">{{ loadError }}</p>
+
+  <app-animal-form (add)="onAdd($event)"></app-animal-form>
+
+  <app-barn-list [animals]="animals" (remove)="onRemove($event)"></app-barn-list>
+</div>

@@ -1,0 +1,30 @@
+<div class="card" data-testid="barn-list">
+  <h2>Barns</h2>
+
+  <p class="empty-state" *ngIf="groups.length === 0" data-testid="no-barns-message">
+    No animals yet. Add one above to create the first barn.
+  </p>
+
+  <div
+    class="barn"
+    *ngFor="let group of groups"
+    [attr.data-testid]="'barn-' + group.barn.id"
+  >
+    <h3>
+      {{ group.barn.name }} &mdash; {{ group.barn.color }}
+      ({{ group.animals.length }} / {{ group.barn.capacity }})
+    </h3>
+    <ul>
+      <li *ngFor="let animal of group.animals" [attr.data-testid]="'animal-' + animal.id">
+        <span>{{ animal.name }}</span>
+        <button
+          class="secondary"
+          [attr.data-testid]="'remove-animal-' + animal.id"
+          (click)="onRemove(animal.id)"
+        >
+          Remove
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

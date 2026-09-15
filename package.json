@@ -1,0 +1,14 @@
+{
+  "name": "logicgate-sdet-live-farm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LogicGate SDET live coding exercise - Angular app + Express/TS mock server, run together.",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix mock-server && npm install --prefix angular-app",
+    "dev": "concurrently -n mock-server,angular -c blue,magenta \"npm run dev --prefix mock-server\" \"npm start --prefix angular-app\"",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
